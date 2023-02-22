@@ -63,6 +63,18 @@ class Vaga
     }
     
     /**
+     * Método responsável por buscar uma vaga com base em seu ID
+     * @param  integer $id
+     * @return Vaga
+     */
+    public static function getVaga($id)
+    {
+      //return (new Database('vagas', '\\App\\Entity\\Vaga'))->select('id_vaga= '.$id)->fetchObject(self::class);
+      
+      return (new Database('vagas', '\\App\\Entity\\Vaga'))->select('id_vaga= '.$id)->fetchObject(self::class);
+    }
+
+    /**
      * Método responsável por obter as vagas do Banco de dados
      * @param  string $where
      * @param string $order
@@ -77,19 +89,14 @@ class Vaga
          return (new Database('vagas', '\\App\\Entity\\Vaga'))->select($where,$order,$limit,$fields)->fetchAll();
 
      }
-
-    /**
-     * Método responsável por buscar uma vaga com base em seu ID
-     * @param  integer $id
-     * @return Vaga
-     */
-     public static function getVaga($id)
-     {
-       //return (new Database('vagas', '\\App\\Entity\\Vaga'))->select('id_vaga= '.$id)->fetchObject(self::class);
-       
-       return (new Database('vagas', '\\App\\Entity\\Vaga'))->select('id_vaga= '.$id)->fetchObject(self::class);
-     }
      
+
+     public static function getQtdVagas($where = null, $order = null, $limit = null,$fields='*')
+     {
+
+         return (new Database('vagas', '\\App\\Entity\\Vaga'))->select($where,$order,$limit,'COUNT(*) as qtd')->fetchObject()->qtd;
+
+     }
 
 
 

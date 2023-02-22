@@ -139,7 +139,6 @@ class Database{
         $this->execute($query, array_values($values));
 
         return true;
-       
      }
 
      /**
@@ -157,7 +156,6 @@ class Database{
 
        return true;
     }
-
 }
 
 ?>
