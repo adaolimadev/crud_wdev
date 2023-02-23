@@ -31,7 +31,7 @@ class Database{
         $this->entity = $entity;
         $this->setConnection();
     }
-
+    
     //Cria a conexão com o banco de dados usando as credenciais do BD
     private function setConnection()
     {
